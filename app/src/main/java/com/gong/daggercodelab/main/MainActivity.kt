@@ -6,18 +6,24 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.gong.daggercodelab.MyApplication
 import com.gong.daggercodelab.R
+import com.gong.daggercodelab.data.UserManager
 import com.gong.daggercodelab.login.LoginActivity
 import com.gong.daggercodelab.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainVIewModel
+    @Inject
+    lateinit var mainViewModel: MainVIewModel
+
+    @Inject
+    lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val userManager = (application as MyApplication).userManager
+        (application as MyApplication).appComponent.inject(this)
         if (!userManager.isUserLoggedIn()) {
 
             if (!userManager.isUserRegistered()) {

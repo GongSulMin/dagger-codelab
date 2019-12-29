@@ -8,14 +8,18 @@ import com.gong.daggercodelab.R
 import com.gong.daggercodelab.main.MainActivity
 import com.gong.daggercodelab.registration.enterdetails.EnterDetailsFragment
 import com.gong.daggercodelab.registration.termsandconditions.TermsAndConditionsFragment
+import javax.inject.Inject
 
 class RegistrationActivity : AppCompatActivity() {
 
+    @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+        (application as MyApplication).appComponent.inject(this)
 
         registrationViewModel = RegistrationViewModel((application as MyApplication).userManager)
 

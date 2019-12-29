@@ -1,11 +1,14 @@
 package com.gong.daggercodelab.data
 
 import com.gong.daggercodelab.data.storage.Storage
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val REGISTERED_USER = "registered_user"
 private const val PASSWORD_SUFFIX = "password"
 
-class UserManager(private val storage: Storage) {
+@Singleton
+class UserManager @Inject constructor(private val storage: Storage) {
 
     var userDataRepository: UserDataRepository? = null
 

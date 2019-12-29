@@ -1,8 +1,9 @@
 package com.gong.daggercodelab.main
 
 import com.gong.daggercodelab.data.UserDataRepository
+import javax.inject.Inject
 
-class MainVIewModel(private val userDataRepository: UserDataRepository) {
+class MainVIewModel @Inject constructor(private val userDataRepository: UserDataRepository) {
 
     val welcomeText: String
         get() = "Hello ${userDataRepository.username}"
