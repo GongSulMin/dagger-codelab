@@ -9,7 +9,14 @@ import com.gong.daggercodelab.di.DaggerAppComponent
 class MyApplication : Application() {
 
     val appComponent: AppComponent by lazy {
-        DaggerAppComponent.factory().create(applicationContext)
+
+//        DaggerAppComponent
+//            .builder()
+//            .application(applicationContext)
+//            .build()
+        DaggerAppComponent
+            .factory()
+            .create(applicationContext)
     }
 
     open val userManager by lazy {
