@@ -2,11 +2,12 @@ package com.gong.daggercodelab.registration.enterdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import javax.inject.Inject
 
 
 private const val MAX_LENGTH = 5
 
-class EnterDetailsViewModel {
+class EnterDetailsViewModel @Inject constructor() {
     private val _enterDetailsState = MutableLiveData<EnterDetailsViewState>()
     val enterDetailsState: LiveData<EnterDetailsViewState>
         get() = _enterDetailsState
